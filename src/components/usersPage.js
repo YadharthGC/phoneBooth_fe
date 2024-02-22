@@ -55,7 +55,9 @@ export default function UsersPage() {
         token: uuidv4(),
       };
       await axios
-        .post(`${linkNode}/setuser`, { dataObj })
+        .post(`https://phonebooth-be.onrender.com/ablelyfbooth/setuser`, {
+          dataObj,
+        })
         .then((res) => {
           console.log(res.data);
           if (res.data?.status) {
