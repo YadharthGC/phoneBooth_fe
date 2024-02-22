@@ -12,6 +12,8 @@ import QRCode from "react-qr-code";
 import { v4 as uuidv4 } from "uuid";
 import { useRef } from "react";
 import domtoimage from "dom-to-image";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UsersPage() {
   const [name, setName] = useState("");
@@ -61,14 +63,13 @@ export default function UsersPage() {
         .then((res) => {
           console.log(res.data);
           if (res.data?.status) {
-            alert("Submitted Succesfully");
+            toast("Submitted Sucessfully");
             handleClear();
-            console.log(dataObj);
             setQrValue(dataObj);
             setQrShow(true);
             setTimeout(() => {
               handleDownload(dataObj);
-            }, 3000);
+            }, 2000);
           }
         })
         .catch((err) => {
@@ -250,6 +251,8 @@ export default function UsersPage() {
           />
         </div>
       )}
+
+      <ToastContainer />
     </div>
   );
 }
