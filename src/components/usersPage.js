@@ -10,6 +10,8 @@ import { linkNode } from "../nodeLink";
 import axios from "axios";
 import QRCode from "react-qr-code";
 import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
+import domtoimage from "dom-to-image";
 
 export default function UsersPage() {
   const [name, setName] = useState("");
@@ -33,6 +35,7 @@ export default function UsersPage() {
       label: "Accountant",
     },
   ];
+  const qrCodeRef = useRef(null);
 
   useEffect(() => {
     try {
@@ -61,10 +64,31 @@ export default function UsersPage() {
             console.log(dataObj);
             setQrValue(dataObj);
             setQrShow(true);
+            setTimeout(() => {
+              handleDownload(dataObj);
+            }, 3000);
           }
         })
         .catch((err) => {
           console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDownload = async (dataObj) => {
+    try {
+      const qrCodeDiv = document.getElementById("qrCode");
+      console.log(qrCodeDiv);
+
+      domtoimage
+        .toJpeg(document.getElementById("qrCode").parentNode)
+        .then(function (dataUrl) {
+          let link = document.createElement("a");
+          link.download = `${dataObj.name}.jpeg`;
+          link.href = dataUrl;
+          link.click();
         });
     } catch (err) {
       console.log(err);
@@ -215,10 +239,12 @@ export default function UsersPage() {
       ) : (
         <div className="qrDiv">
           <QRCode
+            ref={qrCodeRef}
             id="qrCode"
             size={256}
-            value={qrValue}
+            value={JSON.stringify(qrValue)}
             viewBox={`0 0 256 256`}
+            download
           />
         </div>
       )}
