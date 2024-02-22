@@ -1,0 +1,82 @@
+#videoPage {
+  background: url("../images/bbimg.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+  .camera {
+  }
+  .videoDiv {
+    margin-top: 1%;
+  }
+  video {
+    object-fit: contain;
+    width: 85vw;
+    height: 85vh;
+  }
+  .screenPage {
+    display: flex;
+    justify-content: center;
+  }
+  .submitDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .submitBtn {
+    font-size: 50px;
+    color: red;
+    cursor: pointer;
+  }
+  #nextIcon {
+    color: blue;
+    cursor: pointer;
+    font-size: 50px;
+    width: 46px;
+    height: 67px;
+  }
+  #canvasTag {
+    display: none;
+  }
+  .nxtBtn {
+  }
+}
+
+.webCamPage {
+  background: url("../images/bbimg.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .page {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .livCamDiv {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+  }
+  .showCamDiv {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+  }
+  #webcamLive {
+    border-radius: 5px;
+  }
+  .captureDiv {
+    text-align: center;
+  }
+  .redBtn {
+    font-size: 40px;
+    color: red;
+    cursor: pointer;
+  }
+  .imgSubmit {
+    text-align: center;
+    margin-top: 1%;
+  }
+}

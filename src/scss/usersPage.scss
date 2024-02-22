@@ -1,0 +1,154 @@
+#usersPage {
+  background-image: linear-gradient(
+    to right top,
+    #e38250,
+    #ce8754,
+    #ba895b,
+    #a78965,
+    #978871,
+    #968c7b,
+    #959085,
+    #95938f,
+    #a19e99,
+    #ada9a4,
+    #bab5ae,
+    #c7c0b9
+  );
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Bentham", serif;
+  font-weight: 400;
+  font-style: normal;
+
+  .usersPage {
+    height: 100%;
+    width: 50%;
+    border: solid 1px black;
+    padding: 10px;
+  }
+  .head {
+    font-size: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    text-decoration: underline;
+  }
+  .nameDiv,
+  .mailDiv,
+  .phoneDiv,
+  .careerDiv,
+  .genderDiv {
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+  }
+  .nameCon,
+  .mailCon,
+  .phoneCon,
+  .careerCon,
+  .genderCon {
+    width: 300px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    border: solid 1px black;
+    // border-radius: 5px;
+  }
+  #nameIcon,
+  #mailIcon,
+  #phoneIcon,
+  #careerIcon,
+  #genderIcon {
+    font-size: 28px;
+  }
+  .nameInput,
+  .mailInput,
+  .phoneInput,
+  .careerSelect {
+    margin-left: 1%;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-family: "Bentham", serif !important;
+    font-size: 20px;
+  }
+  .nameInput:focus,
+  .mailInput:focus,
+  .phoneInput:focus,
+  .careerSelect :focus {
+    outline: none;
+  }
+  .genderRadio {
+    margin: 0px;
+    margin-left: 1%;
+    margin-right: 0.5%;
+  }
+  .genderRadio.female {
+    margin-left: 3%;
+  }
+  .genderCon {
+    font-family: "Bentham", serif !important;
+    font-size: 20px;
+  }
+  #submitBtn {
+    background-color: #22272f;
+    color: white;
+    padding: 10px;
+    border: none;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .resetDiv {
+    margin-top: 2%;
+    text-decoration: underline;
+  }
+  .nameSpan {
+    width: 300px;
+  }
+  .nameHead {
+    margin-top: 2.5%;
+    display: flex;
+    justify-content: center;
+  }
+  .finalDiv {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 615px) {
+    .head {
+      font-size: 40px;
+      text-align: center;
+    }
+    #genderIcon {
+      display: none;
+    }
+  }
+  .qrDiv {
+  }
+  #qrCode {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+  // @media only screen and (max-width: 700px) {
+  //   .nameHead {
+  //     margin-top: 10%;
+  //   }
+  //   .finalDiv {
+  //     margin-top: 15%;
+  //   }
+  // }
+  // @media only screen and (max-width: 460px) {
+  //   .nameHead {
+  //     margin-top: 18%;
+  //   }
+  //   .finalDiv {
+  //     margin-top: 18%;
+  //   }
+  // }
+}
