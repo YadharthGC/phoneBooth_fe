@@ -5,6 +5,7 @@ import chef from "../images/chef.jpg";
 import doc from "../images/doc.jpg";
 import eng from "../images/eng.jpg";
 import logo from "../images/logob.jpg";
+import tk from "../images/tkb.jpg";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
@@ -17,7 +18,7 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [career, setCareer] = useState("");
   const [gender, setGender] = useState("");
-  const [over, setOver] = useState(false);
+  const [over, setOver] = useState(true);
 
   useEffect(() => {
     try {
@@ -34,8 +35,10 @@ export default function Registration() {
         phone: phone,
         email: email,
         career: career,
+        gender: gender,
         token: uuidv4(),
       };
+      let val = `${name}\n${phone}\n${email}\n${career}\n${gender}\n${dataObj.token}`;
       await axios
         .post(`https://phonebooth-be.onrender.com/ablelyfbooth/setuser`, {
           dataObj,
@@ -43,14 +46,8 @@ export default function Registration() {
         .then((res) => {
           console.log(res.data);
           if (res.data?.status) {
-            // toast("Submitted Sucessfully");
             handleClear();
-            setOver(true);
-            // setQrValue(dataObj);
-            // setQrShow(true);
-            // setTimeout(() => {
-            //   handleDownload(dataObj);
-            // }, 2000);
+            setOver(false);
           }
         })
         .catch((err) => {
@@ -67,6 +64,7 @@ export default function Registration() {
       setPhone("");
       setEmail("");
       setCareer("");
+      setGender("");
     } catch (err) {
       console.log(err);
     }
@@ -156,25 +154,45 @@ export default function Registration() {
             <div className="careerDiv">
               <div className="textDiv">What You want to be ?</div>
               <div className="imgDivs">
-                <div className="imgOne">
+                <div
+                  className={`imgOneEng ${career}`}
+                  onClick={() => {
+                    setCareer("engineer");
+                  }}
+                >
                   <div className="imgShow">
                     <img src={eng} className="imgRole" alt="acc" />
                   </div>
                   <div className="textRole">Engineer</div>
                 </div>
-                <div className="imgOne">
+                <div
+                  className={`imgOneDoc ${career}`}
+                  onClick={() => {
+                    setCareer("doctor");
+                  }}
+                >
                   <div className="imgShow">
                     <img src={doc} className="imgRole" alt="acc" />
                   </div>
                   <div className="textRole">Doctor</div>
                 </div>
-                <div className="imgOne">
+                <div
+                  className={`imgOneAcc ${career}`}
+                  onClick={() => {
+                    setCareer("lawyer");
+                  }}
+                >
                   <div className="imgShow">
                     <img src={acc} className="imgRole" alt="acc" />
                   </div>
                   <div className="textRole">Lawyer</div>
                 </div>
-                <div className="imgOne">
+                <div
+                  className={`imgOneChef ${career}`}
+                  onClick={() => {
+                    setCareer("chef");
+                  }}
+                >
                   <div className="imgShow">
                     <img src={chef} className="imgRole" alt="acc" />
                   </div>
@@ -182,12 +200,23 @@ export default function Registration() {
                 </div>
               </div>
             </div>
-            <div className="submitDiv">
+            <div
+              className="submitDiv"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
               <div className="submitText">Submit</div>
             </div>
           </div>
         ) : (
-          ""
+          <div className="body">
+            <div className="tkImgDiv">
+              <img src={tk} className="tkImg" />
+            </div>
+            <div className="tkTextA">Thank You!</div>
+            <div className="tkTextB"> Please Proceed to the Photo Booth.</div>
+          </div>
         )}
       </div>
     </div>

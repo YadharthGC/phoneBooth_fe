@@ -10,6 +10,7 @@
 }
 .imgRole {
   width: 80px;
+  border-radius: 10px;
 }
 .logoImg {
   width: 175px;
@@ -28,13 +29,13 @@
   border: none;
   width: 90%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #5a3014 !important;
   font-family: "Rubik", sans-serif !important;
 }
 .inputDiv {
   background: white;
-  border-radius: 5px;
+  border-radius: 10px;
   border: solid 1px #5a3014;
   width: 100%;
 }
@@ -42,27 +43,27 @@
   outline: none;
 }
 .submitDiv {
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .imgOne {
-  // padding: 7px 5px;
-  // border: solid 1px gray;
+  cursor: pointer;
 }
 .textRole {
   text-align: center;
   font-size: 10px;
 }
 .submitText {
+  cursor: pointer;
   padding: 5px 10px;
   width: 200px;
   background-color: #5a3014;
   color: white;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 12px;
   font-weight: lighter;
 }
@@ -94,4 +95,28 @@
 .genderDiv,
 .careerDiv {
   margin-top: 5%;
+}
+.tkTextB {
+  margin-top: 3%;
+  text-align: center;
+  font-weight: 500;
+}
+.tkTextA {
+  margin-top: 5%;
+  font-size: 30px;
+  text-align: center;
+}
+.tkImg {
+  width: 300px;
+}
+.femaleSpan {
+  margin-left: 5px;
+}
+.imgOneEng.engineer,
+.imgOneDoc.doctor,
+.imgOneAcc.lawyer,
+.imgOneChef.chef {
+  .imgRole {
+    border: solid 2px blue;
+  }
 }
