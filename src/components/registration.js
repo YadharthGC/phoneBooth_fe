@@ -19,6 +19,7 @@ export default function Registration() {
   const [career, setCareer] = useState("");
   const [gender, setGender] = useState("");
   const [over, setOver] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     try {
@@ -29,6 +30,7 @@ export default function Registration() {
 
   const handleSubmit = async () => {
     try {
+      setLoading(true);
       console.log(name, phone, email, career, linkNode);
       let dataObj = {
         name: name,
@@ -48,6 +50,7 @@ export default function Registration() {
           if (res.data?.status) {
             handleClear();
             setOver(false);
+            setLoading(false);
           }
         })
         .catch((err) => {
@@ -79,144 +82,155 @@ export default function Registration() {
           <div className="univName">Empower Futures</div>
         </div>
         <hr id="hrLine" />
-        {over ? (
-          <div className="body">
-            <div className="title">Registration Form</div>
-            <div className="nameDiv">
-              <div className="textDiv">Name:</div>
-              <div className="inputDiv">
-                <input
-                  type="text"
-                  className="boxInput"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="emailDiv">
-              <div className="textDiv">Email:</div>
-              <div className="inputDiv">
-                <input
-                  type="text"
-                  className="boxInput"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="phoneDiv">
-              <div className="textDiv">Phone:</div>
-              <div className="inputDiv">
-                <input
-                  type="text"
-                  className="boxInput"
-                  placeholder="Phone"
-                  value={phone}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="genderDiv">
-              <div className="textDiv">Gender:</div>
-              <div className="genderRadio">
-                <span className="maleSpan">
-                  <input
-                    type="radio"
-                    className="maleRadio"
-                    name="gender"
-                    onClick={() => {
-                      setGender("male");
-                    }}
-                  />
-                </span>
-                <span className="maleText">Male</span>
-                <span className="femaleSpan">
-                  <input
-                    type="radio"
-                    name="gender"
-                    className="femaleRadio"
-                    onClick={() => {
-                      setGender("male");
-                    }}
-                  />
-                </span>
-                <span className="femaleText">Female</span>
-              </div>
-            </div>
-            <div className="careerDiv">
-              <div className="textDiv">What You want to be ?</div>
-              <div className="imgDivs">
-                <div
-                  className={`imgOneEng ${career}`}
-                  onClick={() => {
-                    setCareer("engineer");
-                  }}
-                >
-                  <div className="imgShow">
-                    <img src={eng} className="imgRole" alt="acc" />
-                  </div>
-                  <div className="textRole">Engineer</div>
-                </div>
-                <div
-                  className={`imgOneDoc ${career}`}
-                  onClick={() => {
-                    setCareer("doctor");
-                  }}
-                >
-                  <div className="imgShow">
-                    <img src={doc} className="imgRole" alt="acc" />
-                  </div>
-                  <div className="textRole">Doctor</div>
-                </div>
-                <div
-                  className={`imgOneAcc ${career}`}
-                  onClick={() => {
-                    setCareer("lawyer");
-                  }}
-                >
-                  <div className="imgShow">
-                    <img src={acc} className="imgRole" alt="acc" />
-                  </div>
-                  <div className="textRole">Lawyer</div>
-                </div>
-                <div
-                  className={`imgOneChef ${career}`}
-                  onClick={() => {
-                    setCareer("chef");
-                  }}
-                >
-                  <div className="imgShow">
-                    <img src={chef} className="imgRole" alt="acc" />
-                  </div>
-                  <div className="textRole">Chef</div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="submitDiv"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              <div className="submitText">Submit</div>
-            </div>
+        {loading ? (
+          <div className="body complete">
+            {/* <div className="tkImgDiv">
+              <img src={tk} className="tkImg" alt="tk" />
+            </div> */}
+            <div className="tkTextB">Your details are being Submitted...</div>
           </div>
+        ) : !loading ? (
+          over ? (
+            <div className="body">
+              <div className="title">Registration Form</div>
+              <div className="nameDiv">
+                <div className="textDiv">Name:</div>
+                <div className="inputDiv">
+                  <input
+                    type="text"
+                    className="boxInput"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="emailDiv">
+                <div className="textDiv">Email:</div>
+                <div className="inputDiv">
+                  <input
+                    type="text"
+                    className="boxInput"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="phoneDiv">
+                <div className="textDiv">Phone:</div>
+                <div className="inputDiv">
+                  <input
+                    type="text"
+                    className="boxInput"
+                    placeholder="Phone"
+                    value={phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="genderDiv">
+                <div className="textDiv">Gender:</div>
+                <div className="genderRadio">
+                  <span className="maleSpan">
+                    <input
+                      type="radio"
+                      className="maleRadio"
+                      name="gender"
+                      onClick={() => {
+                        setGender("male");
+                      }}
+                    />
+                  </span>
+                  <span className="maleText">Male</span>
+                  <span className="femaleSpan">
+                    <input
+                      type="radio"
+                      name="gender"
+                      className="femaleRadio"
+                      onClick={() => {
+                        setGender("male");
+                      }}
+                    />
+                  </span>
+                  <span className="femaleText">Female</span>
+                </div>
+              </div>
+              <div className="careerDiv">
+                <div className="textDiv">What You want to be ?</div>
+                <div className="imgDivs">
+                  <div
+                    className={`imgOneEng ${career}`}
+                    onClick={() => {
+                      setCareer("engineer");
+                    }}
+                  >
+                    <div className="imgShow">
+                      <img src={eng} className="imgRole" alt="acc" />
+                    </div>
+                    <div className="textRole">Engineer</div>
+                  </div>
+                  <div
+                    className={`imgOneDoc ${career}`}
+                    onClick={() => {
+                      setCareer("doctor");
+                    }}
+                  >
+                    <div className="imgShow">
+                      <img src={doc} className="imgRole" alt="acc" />
+                    </div>
+                    <div className="textRole">Doctor</div>
+                  </div>
+                  <div
+                    className={`imgOneAcc ${career}`}
+                    onClick={() => {
+                      setCareer("lawyer");
+                    }}
+                  >
+                    <div className="imgShow">
+                      <img src={acc} className="imgRole" alt="acc" />
+                    </div>
+                    <div className="textRole">Lawyer</div>
+                  </div>
+                  <div
+                    className={`imgOneChef ${career}`}
+                    onClick={() => {
+                      setCareer("chef");
+                    }}
+                  >
+                    <div className="imgShow">
+                      <img src={chef} className="imgRole" alt="acc" />
+                    </div>
+                    <div className="textRole">Chef</div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="submitDiv"
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                <div className="submitText">Submit</div>
+              </div>
+            </div>
+          ) : (
+            <div className="body complete">
+              <div className="tkImgDiv">
+                <img src={tk} className="tkImg" />
+              </div>
+              <div className="tkTextA">Thank You!</div>
+              <div className="tkTextB"> Please Proceed to the Photo Booth.</div>
+            </div>
+          )
         ) : (
-          <div className="body">
-            <div className="tkImgDiv">
-              <img src={tk} className="tkImg" />
-            </div>
-            <div className="tkTextA">Thank You!</div>
-            <div className="tkTextB"> Please Proceed to the Photo Booth.</div>
-          </div>
+          ""
         )}
       </div>
     </div>
