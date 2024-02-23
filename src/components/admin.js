@@ -180,7 +180,7 @@ export default function Admin() {
                 <div className="aiHead">AI Image</div>
               </div>
               <div className="aiDiv">
-                <img alt="imgz" className="altImg" src={acc} />
+                <img alt="imgz" className="altImg" src={aiSrc} />
               </div>
               <div className="iconsDivs">
                 <div className="refreshDiv">
