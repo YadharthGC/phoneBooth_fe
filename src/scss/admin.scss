@@ -1,0 +1,83 @@
+#admin {
+  background-color: #d7d8d8;
+  min-height: 100vh;
+  height: 100%;
+  font-family: "Rubik", sans-serif;
+
+  table,
+  td {
+    border: solid 1px #5a3014;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 5px;
+    font-size: 15px;
+  }
+  table {
+    width: 100%;
+  }
+  .tdADiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #maleIcon {
+    font-size: 40px;
+    color: blue;
+  }
+  #femaleIcon {
+    font-size: 40px;
+    color: rgb(223, 45, 143);
+  }
+  #cameraSpan,
+  #autoIcon,
+  #deleteIcon {
+    font-size: 24px;
+  }
+  .adminTable {
+    padding: 2% 5%;
+  }
+  .iconsDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  #careerIcon {
+    font-size: 22px;
+  }
+  .careerDiv,
+  .careerIconSpan {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .tdC {
+    width: 10%;
+  }
+  #deleteIcon:hover {
+    cursor: pointer;
+    color: rgb(247, 7, 7);
+  }
+  #autoIcon:hover {
+    cursor: pointer;
+    color: rgb(240, 118, 137);
+  }
+  #cameraIcon:hover {
+    cursor: pointer;
+    color: rgb(110, 187, 235);
+  }
+
+  .phoneInp {
+    border: none;
+    padding: 10px 5px;
+    border-radius: 10px;
+    font-family: "Rubik", sans-serif;
+    font-size: 15px;
+  }
+  .phoneInp:focus {
+    outline: none;
+  }
+  .phoneSearch {
+    margin-bottom: 1%;
+  }
+}

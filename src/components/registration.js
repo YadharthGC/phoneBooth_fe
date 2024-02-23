@@ -31,7 +31,7 @@ export default function Registration() {
   const handleSubmit = async () => {
     try {
       setLoading(true);
-      console.log(name, phone, email, career, linkNode);
+      console.log(name, phone, email, career, gender, linkNode);
       let dataObj = {
         name: name,
         phone: phone,
@@ -155,7 +155,7 @@ export default function Registration() {
                       name="gender"
                       className="femaleRadio"
                       onClick={() => {
-                        setGender("male");
+                        setGender("female");
                       }}
                     />
                   </span>

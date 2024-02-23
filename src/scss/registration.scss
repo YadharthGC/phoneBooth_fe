@@ -7,119 +7,120 @@
   color: #5a3014;
   font-weight: 600;
   font-family: "Rubik", sans-serif;
-}
-.body.complete {
-  height: 100%;
-}
-.imgRole {
-  width: 80px;
-  border-radius: 10px;
-}
-.logoImg {
-  width: 175px;
-}
-.registerPage {
-  // border: solid 1px black;
-  padding: 0px 50px;
-  // width: 430px;
-  // padding-top: 10px;
-}
-.title {
-  font-size: 20px;
-  margin-top: 15px;
-}
-.boxInput {
-  border: none;
-  width: 90%;
-  padding: 10px;
-  border-radius: 10px;
-  color: #5a3014 !important;
-  font-family: "Rubik", sans-serif !important;
-}
-.inputDiv {
-  background: white;
-  border-radius: 10px;
-  border: solid 1px #5a3014;
-  width: 100%;
-}
-.boxInput:focus {
-  outline: none;
-}
-.submitDiv {
-  margin-top: 15px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.imgOne {
-  cursor: pointer;
-}
-.textRole {
-  text-align: center;
-  font-size: 10px;
-}
-.submitText {
-  cursor: pointer;
-  padding: 5px 10px;
-  width: 200px;
-  background-color: #5a3014;
-  color: white;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: lighter;
-}
-.univLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.imgDivs {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  column-gap: 4px;
-  row-gap: 4px;
-  margin-top: 5px;
-}
-.univName {
-  text-align: center;
-  font-size: 25px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-#hrLine {
-  width: 75%;
-}
-.nameDiv,
-.emailDiv,
-.phoneDiv,
-.genderDiv,
-.careerDiv {
-  margin-top: 5%;
-}
-.tkTextB {
-  margin-top: 3%;
-  text-align: center;
-  font-weight: 500;
-}
-.tkTextA {
-  margin-top: 5%;
-  font-size: 30px;
-  text-align: center;
-}
-.tkImg {
-  width: 300px;
-}
-.femaleSpan {
-  margin-left: 5px;
-}
-.imgOneEng.engineer,
-.imgOneDoc.doctor,
-.imgOneAcc.lawyer,
-.imgOneChef.chef {
+
+  .body.complete {
+    height: 100%;
+  }
   .imgRole {
-    border: solid 2px blue;
+    width: 80px;
+    border-radius: 10px;
+  }
+  .logoImg {
+    width: 175px;
+  }
+  .registerPage {
+    // border: solid 1px black;
+    padding: 0px 50px;
+    // width: 430px;
+    // padding-top: 10px;
+  }
+  .title {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+  .boxInput {
+    border: none;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    color: #5a3014 !important;
+    font-family: "Rubik", sans-serif !important;
+  }
+  .inputDiv {
+    background: white;
+    border-radius: 10px;
+    border: solid 1px #5a3014;
+    width: 100%;
+  }
+  .boxInput:focus {
+    outline: none;
+  }
+  .submitDiv {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .imgOne {
+    cursor: pointer;
+  }
+  .textRole {
+    text-align: center;
+    font-size: 10px;
+  }
+  .submitText {
+    cursor: pointer;
+    padding: 5px 10px;
+    width: 200px;
+    background-color: #5a3014;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: lighter;
+  }
+  .univLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .imgDivs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 4px;
+    row-gap: 4px;
+    margin-top: 5px;
+  }
+  .univName {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  #hrLine {
+    width: 75%;
+  }
+  .nameDiv,
+  .emailDiv,
+  .phoneDiv,
+  .genderDiv,
+  .careerDiv {
+    margin-top: 5%;
+  }
+  .tkTextB {
+    margin-top: 3%;
+    text-align: center;
+    font-weight: 500;
+  }
+  .tkTextA {
+    margin-top: 5%;
+    font-size: 30px;
+    text-align: center;
+  }
+  .tkImg {
+    width: 300px;
+  }
+  .femaleSpan {
+    margin-left: 5px;
+  }
+  .imgOneEng.engineer,
+  .imgOneDoc.doctor,
+  .imgOneAcc.lawyer,
+  .imgOneChef.chef {
+    .imgRole {
+      border: solid 2px blue;
+    }
   }
 }

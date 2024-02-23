@@ -15,12 +15,12 @@ import none from "../images/blankProfile.jpg";
 
 export default function CamPage() {
   const webcamRef = useRef(null);
-  const photoRef = useRef(null);
-  const imagesArr = [];
   const navigate = useNavigate();
   const params = useParams();
   const [file, setFile] = useState("");
   const [retake, setRetake] = useState(false);
+
+  // handleGetUser();
 
   useEffect(() => {
     try {
@@ -35,27 +35,6 @@ export default function CamPage() {
       let imgUrl = webcamRef.current.getScreenshot({});
       setFile(imgUrl);
       setRetake(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleGetUser = async () => {
-    try {
-      await axios
-        .get(`${linkNode}/getuser/${params.id}`)
-        .then((res) => {
-          console.log(res.data.msg);
-          setFile(res.data?.msg.inputPic);
-          if (res.data?.msg.inputPic) {
-            retake(false);
-          } else {
-            retake(true);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     } catch (err) {
       console.log(err);
     }
@@ -78,60 +57,35 @@ export default function CamPage() {
     }
   };
 
+  const handleGetUser = async () => {
+    try {
+      await axios
+        .get(`${linkNode}/getuser/${params.id}`)
+        .then((res) => {
+          console.log(res.data.msg);
+          setFile(res.data?.msg.inputPic);
+          if (res.data?.msg.inputPic) {
+            setRetake(false);
+          } else {
+            setRetake(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const videoConstraints = {
-    width: 600,
-    height: 440,
+    width: 700,
+    height: 550,
+    facingmode: { exact: "environment" },
   };
 
   return (
     <div className="webCamPage">
       <div className="page">
-        {/* <div className="livCamDiv">
-          <div className="bodyA">
-            <div className="liveShow">
-              <Webcam
-                id="webcamLive"
-                crossOrigin="anonymous"
-                audio={false}
-                screenshotFormat="image/jpeg"
-                ref={webcamRef}
-                {...videoConstraints}
-              />
-            </div>
-            <div className="captureDiv">
-              <span
-                className="redBtn"
-                onClick={() => {
-                  handleCapture();
-                }}
-              >
-                &#9673;
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="showCamDiv">
-          <div className="bodyB">
-            <div className="imgShow">
-              <img
-                className="dispImg"
-                src={file ? file : none}
-                alt="noimg"
-                {...videoConstraints}
-              />
-            </div>
-            <div className="imgSubmit">
-              <Button
-                variant="contained"
-                onClick={() => {
-                  handleSubmit();
-                }}
-              >
-                Submit
-              </Button>
-            </div>
-          </div>
-        </div> */}
         {retake ? (
           <div className="livCamDiv">
             <div className="bodyA">
