@@ -3,6 +3,7 @@
   min-height: 100vh;
   height: 100%;
   font-family: "Rubik", sans-serif;
+  color: #5a3014;
 
   table,
   td {
@@ -39,7 +40,7 @@
   }
   .iconsDiv {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
   }
   #careerIcon {
@@ -73,21 +74,76 @@
     border-radius: 10px;
     font-family: "Rubik", sans-serif;
     font-size: 15px;
+    border: solid 1px #5a3014;
   }
   .phoneInp:focus {
     outline: none;
   }
   .phoneSearch {
     margin-bottom: 1%;
+    text-align: center;
   }
-}
+  .univLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .univName {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .logoImg {
+    width: 175px;
+  }
+  #hrLine {
+    width: 75%;
+  }
+  .tabLoading {
+    text-align: center;
+  }
+  .cameraSpan,
+  .sendSpan,
+  .deleteSpan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.altImg {
-  width: 100%;
-  border-radius: 10px;
-}
-.iconsDiv {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .altImg {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .iconsDivs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wholeAi {
+    padding: 0% 10%;
+    display: flex;
+    justify-content: center;
+  }
+  .subAi {
+    width: 50%;
+  }
+  .backDiv {
+    display: flex;
+  }
+  .backIconDiv {
+    flex: 0.3;
+  }
+  .aiHead {
+    flex: 0.7;
+  }
+  #backIcon,
+  #restartIcon,
+  #sendIcon {
+    cursor: pointer;
+  }
+  .aiDiv {
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
 }

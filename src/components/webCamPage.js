@@ -45,10 +45,10 @@ export default function CamPage() {
     try {
       let dataObj = {
         name: userDetails.name,
-        gender: userDetails.name,
-        phone: userDetails.name,
-        email: userDetails.name,
-        career: userDetails.name,
+        gender: userDetails.gender,
+        phone: userDetails.phone,
+        email: userDetails.email,
+        career: userDetails.career,
         inputPic: file,
         token: userDetails.token,
       };
