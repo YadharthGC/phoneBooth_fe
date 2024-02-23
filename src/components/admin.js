@@ -51,6 +51,8 @@ export default function Admin() {
       });
     } catch (err) {
       console.log(err);
+      setTabLoad(false);
+      toast("error");
     }
   };
 
@@ -74,7 +76,47 @@ export default function Admin() {
         })
         .catch((err) => {
           console.log(err);
+          setDeleting(false);
+          toast("error");
         });
+    } catch (err) {
+      console.log(err);
+      setDeleting(false);
+      toast("error");
+    }
+  };
+
+  const handleAiImage = async (token) => {
+    try {
+      setDeleting(true);
+      setLoad("Fetching AI Image...");
+      await axios
+        .get(`${linkNode}/getaipic/${token}`)
+        .then((res) => {
+          if (res.data.status) {
+            setAisrc(res.data?.msg);
+            setAiLoad(true);
+          } else {
+            toast("No AI image Generated");
+          }
+          setDeleting(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setDeleting(false);
+          toast("error");
+        });
+    } catch (err) {
+      console.log(err);
+      setDeleting(false);
+      toast("error");
+    }
+  };
+
+  const handleBack = () => {
+    try {
+      setStatus(true);
+      setAiLoad(false);
     } catch (err) {
       console.log(err);
     }
@@ -95,33 +137,27 @@ export default function Admin() {
 
   const handleSend = async () => {
     try {
+      setDeleting(true);
+      setLoad("Sending...");
+
       await axios
         .get(`${linkNode}/sendmail/${validToken}`)
         .then((res) => {
-          console.log(res);
+          setLoad("SuccesFully Sent.");
+          setTimeout(() => {
+            setDeleting(false);
+          }, 2000);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setDeleting(false);
+          toast("error");
+        });
     } catch (err) {
       console.log(err);
+      setDeleting(false);
+      toast("error");
     }
-  };
-
-  const handleAiImage = async (token) => {
-    setDeleting(true);
-    setLoad("Fetching AI Image...");
-    await axios
-      .get(`${linkNode}/getaipic/${token}`)
-      .then((res) => {
-        if (res.data.status) {
-          // setOpen(true);
-          setAisrc(res.data?.msg);
-          setAiLoad(true);
-        } else {
-          toast("No AI image Generated");
-        }
-        setDeleting(false);
-      })
-      .catch((err) => console.log(err));
   };
 
   const HandleAiLoad = () => {
@@ -188,111 +224,104 @@ export default function Admin() {
                     placeholder="search phone"
                   />
                 </div>
-                <table className="adminTable">
-                  <thead className="thead">
-                    <tr>
-                      <td>User</td>
-                      <td>Contact</td>
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody className="tbody">
-                    {users.map((data) => {
-                      if (
-                        !phone ||
-                        (phone &&
-                          data.phone.toString().includes(phone.toString()))
-                      ) {
-                        return (
-                          <tr>
-                            <td className="tdA">
-                              <div className="tdADiv">
-                                <div className="genderDiv">
-                                  {data.gender === "male" ? (
-                                    <MaleIcon id="maleIcon" />
-                                  ) : (
-                                    <FemaleIcon id="femaleIcon" />
-                                  )}
-                                </div>
-                                <div className="nameCareer">
-                                  <div className="nameDiv">{data.name}</div>
-                                  <div className="careerDiv">
-                                    <div>{data.career}</div>
-                                    <div className="careerIconSpan">
-                                      {data.career === "engineer" ? (
-                                        <EngineeringIcon id="careerIcon" />
-                                      ) : data.career === "lawyer" ? (
-                                        <LocalPoliceIcon id="careerIcon" />
-                                      ) : data.career === "doctor" ? (
-                                        <MedicationIcon id="careerIcon" />
-                                      ) : data.career === "chef" ? (
-                                        <FastfoodIcon id="careerIcon" />
-                                      ) : (
-                                        ""
-                                      )}
+                <div className="tabTable">
+                  <table>
+                    <thead className="thead">
+                      <tr>
+                        <td>User</td>
+                        <td>Contact</td>
+                        <td></td>
+                      </tr>
+                    </thead>
+                    <tbody className="tbody">
+                      {users.map((data) => {
+                        if (
+                          !phone ||
+                          (phone &&
+                            data.phone.toString().includes(phone.toString()))
+                        ) {
+                          return (
+                            <tr>
+                              <td className="tdA">
+                                <div className="tdADiv">
+                                  <div className="genderDiv">
+                                    {data.gender === "male" ? (
+                                      <MaleIcon id="maleIcon" />
+                                    ) : (
+                                      <FemaleIcon id="femaleIcon" />
+                                    )}
+                                  </div>
+                                  <div className="nameCareer">
+                                    <div className="nameDiv">{data.name}</div>
+                                    <div className="careerDiv">
+                                      <div>{data.career}</div>
+                                      <div className="careerIconSpan">
+                                        {data.career === "engineer" ? (
+                                          <EngineeringIcon id="careerIcon" />
+                                        ) : data.career === "lawyer" ? (
+                                          <LocalPoliceIcon id="careerIcon" />
+                                        ) : data.career === "doctor" ? (
+                                          <MedicationIcon id="careerIcon" />
+                                        ) : data.career === "chef" ? (
+                                          <FastfoodIcon id="careerIcon" />
+                                        ) : (
+                                          ""
+                                        )}
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td className="tdB">
-                              <div className="mailDiv">{data.email}</div>
-                              <div className="phoneDiv">{data.phone}</div>
-                            </td>
-                            <td className="tdC">
-                              <div className="iconsDiv">
-                                {data.inputPic ? (
-                                  ""
-                                ) : (
-                                  <span className="cameraSpan">
-                                    <CameraAltIcon
-                                      id="cameraIcon"
+                              </td>
+                              <td className="tdB">
+                                <div className="mailDiv">{data.email}</div>
+                                <div className="phoneDiv">{data.phone}</div>
+                              </td>
+                              <td className="tdC">
+                                <div className="iconsDiv">
+                                  {data.inputPic ? (
+                                    ""
+                                  ) : (
+                                    <span className="cameraSpan">
+                                      <CameraAltIcon
+                                        id="cameraIcon"
+                                        onClick={() => {
+                                          handleCamera(data);
+                                        }}
+                                      />
+                                    </span>
+                                  )}
+                                  <span className="sendSpan">
+                                    <AutoFixHighIcon
+                                      id="autoIcon"
                                       onClick={() => {
-                                        handleCamera(data);
+                                        setValidToken(data.token);
+                                        setAisrc("");
+                                        handleAiImage(data.token);
                                       }}
                                     />
                                   </span>
-                                )}
-                                <span className="sendSpan">
-                                  <AutoFixHighIcon
-                                    id="autoIcon"
-                                    onClick={() => {
-                                      setValidToken(data.token);
-                                      setAisrc("");
-                                      handleAiImage(data.token);
-                                    }}
-                                  />
-                                </span>
-                                <span className="deleteSpan">
-                                  <DeleteIcon
-                                    id="deleteIcon"
-                                    onClick={() => {
-                                      handleDeleteUser(data);
-                                    }}
-                                  />
-                                </span>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      }
-                    })}
-                  </tbody>
-                </table>
+                                  <span className="deleteSpan">
+                                    <DeleteIcon
+                                      id="deleteIcon"
+                                      onClick={() => {
+                                        handleDeleteUser(data);
+                                      }}
+                                    />
+                                  </span>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        }
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </>
           );
         }
       }
-    }
-  };
-
-  const handleBack = () => {
-    try {
-      setStatus(true);
-      setAiLoad(false);
-    } catch (err) {
-      console.log(err);
     }
   };
 

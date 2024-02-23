@@ -146,4 +146,31 @@
     margin-top: 1%;
     margin-bottom: 2%;
   }
+  .tabTable {
+    border: solid 1px #5a3014;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .tabTable {
+      max-width: 600px;
+      overflow-x: scroll;
+    }
+  }
+
+  .tabTable::-webkit-scrollbar {
+    width: 5px;
+    height: 2px;
+  }
+
+  /* Track */
+  .tabTable::-webkit-scrollbar-track {
+    background: lightgray;
+  }
+
+  /* Handle */
+  .tabTable::-webkit-scrollbar-thumb {
+    background: #5a3014;
+    width: 7px;
+    height: 3px;
+  }
 }
