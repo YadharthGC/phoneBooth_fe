@@ -20,7 +20,7 @@ export default function CamPage() {
   const [file, setFile] = useState("");
   const [retake, setRetake] = useState(false);
   const [userDetails, setUserDetails] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loadText, setLoadText] = useState("");
 
   // handleGetUser();
@@ -101,10 +101,6 @@ export default function CamPage() {
     }
   };
 
-  const videoConstraints = {
-    facingMode: { exact: "environment" },
-  };
-
   const HanldeCam = () => {
     try {
       if (loading) {
@@ -121,7 +117,7 @@ export default function CamPage() {
                     audio={false}
                     screenshotFormat="image/jpeg"
                     ref={webcamRef}
-                    {...videoConstraints}
+                    facingMode="environment"
                   />
                 </div>
                 <div className="captureDiv">
@@ -146,7 +142,6 @@ export default function CamPage() {
                     className="dispImg"
                     src={file ? file : none}
                     alt="noimg"
-                    {...videoConstraints}
                   />
                 </div>
                 <div className="imgSubmit">
