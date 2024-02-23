@@ -2,8 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import "../scss/videoPage.scss";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
@@ -26,8 +24,6 @@ export default function CamPage() {
     facingMode: "environment",
   };
 
-  // handleGetUser();
-
   useEffect(() => {
     try {
       handleGetUser();
@@ -39,6 +35,7 @@ export default function CamPage() {
   const handleCapture = () => {
     try {
       let imgUrl = webcamRef.current.getScreenshot({});
+
       setFile(imgUrl);
       setRetake(false);
     } catch (err) {
@@ -50,6 +47,7 @@ export default function CamPage() {
     try {
       setLoading(true);
       setLoadText("Submitting Image...");
+
       let dataObj = {
         name: userDetails.name,
         gender: userDetails.gender,
@@ -59,12 +57,12 @@ export default function CamPage() {
         inputPic: file,
         token: userDetails.token,
       };
+
       await axios
         .post(`${linkNode}/setpic/${params.id}`, {
           dataObj,
         })
         .then((res) => {
-          console.log(res.data);
           navigate("/admin");
           setLoading(false);
         })
@@ -81,12 +79,13 @@ export default function CamPage() {
     try {
       setLoading(true);
       setLoadText("Fetching the candidate Details...");
+
       await axios
         .get(`${linkNode}/getuser/${params.id}`)
         .then((res) => {
-          console.log(res.data.msg);
           setUserDetails(res.data.msg);
           setFile(res.data?.msg.inputPic);
+
           if (res.data?.msg.inputPic) {
             setRetake(false);
           } else {
