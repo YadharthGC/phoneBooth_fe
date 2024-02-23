@@ -1,6 +1,5 @@
 import React from "react";
 import "../scss/admin.scss";
-import { Button } from "@mui/material";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import ImageIcon from "@mui/icons-material/Image";
 import SendIcon from "@mui/icons-material/Send";
@@ -18,12 +17,32 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import MedicationIcon from "@mui/icons-material/Medication";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import acc from "../images/acc.jpg";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
   const [status, setStatus] = useState(false);
   const [phone, setPhone] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
 
   useEffect(() => {
     try {
@@ -65,6 +84,20 @@ export default function Admin() {
         .catch((err) => {
           console.log(err);
         });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSend = () => {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleReset = () => {
+    try {
     } catch (err) {
       console.log(err);
     }
@@ -147,7 +180,12 @@ export default function Admin() {
                             />
                           </span>
                           <span className="sendSpan">
-                            <AutoFixHighIcon id="autoIcon" />
+                            <AutoFixHighIcon
+                              id="autoIcon"
+                              onClick={() => {
+                                handleOpen();
+                              }}
+                            />
                           </span>
                           <span className="deleteSpan">
                             <DeleteIcon
@@ -167,6 +205,38 @@ export default function Admin() {
           </table>
         </div>
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            <img alt="imgz" className="altImg" src={acc} />
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <div className="iconsDiv">
+              <div className="refreshDiv">
+                <RestartAltIcon
+                  id="restartIcon"
+                  onClick={() => {
+                    handleReset();
+                  }}
+                />
+              </div>
+              <div className="SendDiv">
+                <SendIcon
+                  id="sendIcon"
+                  onClick={() => {
+                    handleSend();
+                  }}
+                />
+              </div>
+            </div>
+          </Typography>
+        </Box>
+      </Modal>
     </div>
   );
 }

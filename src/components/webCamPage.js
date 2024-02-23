@@ -19,6 +19,7 @@ export default function CamPage() {
   const params = useParams();
   const [file, setFile] = useState("");
   const [retake, setRetake] = useState(false);
+  const [userDetails, setUserDetails] = useState("");
 
   // handleGetUser();
 
@@ -42,10 +43,18 @@ export default function CamPage() {
 
   const handleSubmit = async () => {
     try {
+      let dataObj = {
+        name: userDetails.name,
+        gender: userDetails.name,
+        phone: userDetails.name,
+        email: userDetails.name,
+        career: userDetails.name,
+        inputPic: file,
+        token: userDetails.token,
+      };
       await axios
-        .post(`${linkNode}/setpic`, {
-          base: file,
-          id: params.id,
+        .post(`${linkNode}/setpic/${params.id}`, {
+          dataObj,
         })
         .then((res) => {
           console.log(res.data);
@@ -63,6 +72,7 @@ export default function CamPage() {
         .get(`${linkNode}/getuser/${params.id}`)
         .then((res) => {
           console.log(res.data.msg);
+          setUserDetails(res.data.msg);
           setFile(res.data?.msg.inputPic);
           if (res.data?.msg.inputPic) {
             setRetake(false);
