@@ -29,8 +29,10 @@ export default function Admin() {
   const [status, setStatus] = useState(false);
   const [phone, setPhone] = useState("");
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+
   const handleClose = () => setOpen(false);
+  const [validToken, setValidToken] = useState("");
+  const [aiSrc, setAisrc] = useState("");
 
   const style = {
     position: "absolute",
@@ -39,7 +41,8 @@ export default function Admin() {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    // border: "2px solid #000",
+    borderRadius: "10px",
     boxShadow: 24,
     p: 4,
   };
@@ -89,18 +92,44 @@ export default function Admin() {
     }
   };
 
-  const handleSend = () => {
+  const handleReset = async (token) => {
     try {
+      await axios
+        .delete(`${linkNode}/delopupic/${validToken}`)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleReset = () => {
+  const handleSend = async () => {
     try {
+      await axios
+        .get(`${linkNode}/sendmail/${validToken}`)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleOpen = async (token) => {
+    console.log(token);
+    await axios
+      .get(`${linkNode}/getaipic/${token}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status) {
+          setOpen(true);
+        } else {
+          setOpen(true);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -183,7 +212,9 @@ export default function Admin() {
                             <AutoFixHighIcon
                               id="autoIcon"
                               onClick={() => {
-                                handleOpen();
+                                console.log(data);
+                                setValidToken(data.token);
+                                handleOpen(data.token);
                               }}
                             />
                           </span>

@@ -80,7 +80,14 @@
   .phoneSearch {
     margin-bottom: 1%;
   }
-  .altImg {
-    width: 100%;
-  }
+}
+
+.altImg {
+  width: 100%;
+  border-radius: 10px;
+}
+.iconsDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
