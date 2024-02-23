@@ -130,6 +130,7 @@ export default function Admin() {
         .delete(`${linkNode}/delopupic/${validToken}`)
         .then((res) => {
           console.log(res);
+          setAiLoad(false);
           setDeleting(false);
         })
         .catch((err) => {
@@ -154,6 +155,7 @@ export default function Admin() {
         .then((res) => {
           setLoad("SuccesFully Sent.");
           setTimeout(() => {
+            setAiLoad(false);
             setDeleting(false);
           }, 2000);
         })
