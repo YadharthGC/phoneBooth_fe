@@ -22,6 +22,13 @@ export default function CamPage() {
   const [userDetails, setUserDetails] = useState("");
   const [loading, setLoading] = useState(true);
   const [loadText, setLoadText] = useState("");
+  const constraints = {
+    video: {
+      facingMode: {
+        exact: "environment",
+      },
+    },
+  };
 
   // handleGetUser();
 
@@ -117,7 +124,7 @@ export default function CamPage() {
                     audio={false}
                     screenshotFormat="image/jpeg"
                     ref={webcamRef}
-                    facingMode="environment"
+                    videoConstraints={constraints}
                   />
                 </div>
                 <div className="captureDiv">
