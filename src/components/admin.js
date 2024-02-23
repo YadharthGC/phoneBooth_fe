@@ -124,14 +124,23 @@ export default function Admin() {
 
   const handleReset = async () => {
     try {
+      setDeleting(true);
+      setLoad("AI Image will be reloaded...");
       await axios
         .delete(`${linkNode}/delopupic/${validToken}`)
         .then((res) => {
           console.log(res);
+          setDeleting(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setDeleting(false);
+          toast("error");
+        });
     } catch (err) {
       console.log(err);
+      setDeleting(false);
+      toast("error");
     }
   };
 
@@ -177,7 +186,7 @@ export default function Admin() {
                     }}
                   />
                 </div>
-                <div className="aiHead">AI Image</div>
+                {/* <div className="aiHead">AI Image</div> */}
               </div>
               <div className="aiDiv">
                 <img alt="imgz" className="altImg" src={aiSrc} />
