@@ -23,11 +23,7 @@ export default function CamPage() {
   const [loading, setLoading] = useState(true);
   const [loadText, setLoadText] = useState("");
   const constraints = {
-    video: {
-      facingMode: {
-        exact: "environment",
-      },
-    },
+    facingMode: "environment",
   };
 
   // handleGetUser();
